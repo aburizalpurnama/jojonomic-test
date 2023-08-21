@@ -1,2 +1,1 @@
-# jojonomic-test
-Jojonomic Technical Test
+# Jojonomic Technical Test
