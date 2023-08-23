@@ -53,11 +53,11 @@ func inputPrice(w http.ResponseWriter, r *http.Request) {
 	responsePayload = usecase.InputPrice(requestPayload)
 	payload, _ := json.Marshal(responsePayload)
 
-	w.WriteHeader(http.StatusOK)
-	if responsePayload.Error {
-		w.WriteHeader(http.StatusInternalServerError)
-	}
-
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(payload)
+	if responsePayload.Error {
+		w.WriteHeader(http.StatusInternalServerError)
+	} else {
+		w.WriteHeader(http.StatusOK)
+	}
 }
