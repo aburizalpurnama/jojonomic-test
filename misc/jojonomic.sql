@@ -1,4 +1,4 @@
-CREATE TABLE "tbl_harga" (
+CREATE TABLE IF NOT EXISTS "tbl_harga" (
   "id" varchar(32) PRIMARY KEY,
   "topup" bigint NOT NULL,
   "buyback" bigint NOT NULL,
@@ -6,14 +6,14 @@ CREATE TABLE "tbl_harga" (
   "admin_id" varchar(32) NOT NULL
 );
 
-CREATE TABLE "tbl_rekening" (
+CREATE TABLE IF NOT EXISTS "tbl_rekening" (
   "id" varchar(32) PRIMARY KEY,
   "norek" varchar(10) NOT NULL,
   "saldo" float NOT NULL,
   "updated_at" int
 );
 
-CREATE TABLE "tbl_transaksi" (
+CREATE TABLE IF NOT EXISTS "tbl_transaksi" (
   "id" varchar(32) PRIMARY KEY,
   "date" int NOT NULL,
   "type" varchar(10) NOT NULL,
