@@ -1,6 +1,7 @@
 go 1.21.0
 
 use (
+	./microservices/price-check-service
 	./microservices/price-input-service
 	./microservices/price-input-storage
 )
