@@ -37,6 +37,6 @@ func (m *messageBrokerImpl) ProcudeData(topic, key string, value []byte) (err er
 		return fmt.Errorf("failed to produce message, err: %w", err)
 	}
 
-	log.Printf("[input-price-producer] partition id: %d; offset:%d\n", partition, offset)
+	log.Printf("[producer] partition id: %d; offset:%d\n", partition, offset)
 	return
 }
