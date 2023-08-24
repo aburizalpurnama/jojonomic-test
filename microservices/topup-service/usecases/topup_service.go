@@ -10,9 +10,10 @@ import (
 
 type (
 	Topup struct {
-		Gram  float32 `json:"gram"`
-		Harga int64   `json:"harga"`
-		Norek string  `json:"norek,omitempty"`
+		Gram         float32 `json:"gram"`
+		HargaTopup   int64   `json:"harga_topup"`
+		HargaBuyback int64   `json:"harga_buyback"`
+		Norek        string  `json:"norek,omitempty"`
 	}
 
 	TopupUsecase interface {

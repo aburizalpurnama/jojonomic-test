@@ -122,10 +122,14 @@ func topup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	strGram := fmt.Sprintf("%.3f", gram)
+	newGram, _ := strconv.ParseFloat(strGram, 32)
+
 	data := usecases.Topup{
-		Gram:  float32(gram),
-		Harga: int64(harga),
-		Norek: requestPayload.Norek,
+		Gram:         float32(newGram),
+		HargaTopup:   price.Topup,
+		HargaBuyback: price.Buyback,
+		Norek:        requestPayload.Norek,
 	}
 
 	usecase := usecases.NewTopupUsecase(broker.NewMessageBroker())

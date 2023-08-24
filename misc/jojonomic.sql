@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS "tbl_transaksi" (
   "date" int NOT NULL,
   "type" varchar(10) NOT NULL,
   "rekening_id" varchar(32) NOT NULL,
+  "norek" varchar(10) NOT NULL,
   "gram" float NOT NULL,
   "harga_topup" bigint NOT NULL,
   "harga_buyback" bigint NOT NULL,

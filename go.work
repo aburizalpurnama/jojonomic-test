@@ -5,4 +5,5 @@ use (
 	./microservices/price-input-service
 	./microservices/price-input-storage
 	./microservices/topup-service
+	./microservices/topup-storage
 )
