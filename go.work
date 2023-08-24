@@ -2,6 +2,7 @@ go 1.21.0
 
 use (
 	./microservices/balance-check-service
+	./microservices/mutation-check-service
 	./microservices/price-check-service
 	./microservices/price-input-service
 	./microservices/price-input-storage
