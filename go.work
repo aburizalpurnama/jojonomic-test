@@ -3,6 +3,7 @@ go 1.21.0
 use (
 	./microservices/balance-check-service
 	./microservices/buyback-service
+	./microservices/buyback-storage
 	./microservices/mutation-check-service
 	./microservices/price-check-service
 	./microservices/price-input-service
