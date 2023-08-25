@@ -46,10 +46,10 @@ func checkPrice(w http.ResponseWriter, r *http.Request) {
 	payload, _ := json.Marshal(responsePayload)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(payload)
 	if responsePayload.Error {
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
+	w.Write(payload)
 }

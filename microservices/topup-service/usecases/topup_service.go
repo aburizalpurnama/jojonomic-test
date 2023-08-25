@@ -3,6 +3,8 @@ package usecases
 import (
 	"encoding/json"
 	"price-input-service/broker"
+	"strconv"
+	"strings"
 	"topup-service/usecases/response"
 
 	"github.com/teris-io/shortid"
@@ -51,4 +53,18 @@ func (p *TopupUsecaseImpl) Topup(payload Topup) response.TopupResponse {
 	response.RefId = key
 
 	return response
+}
+
+func CountDecimalPlaces(value float32) int {
+	var count int
+	strValue := strconv.FormatFloat(float64(value), 'f', -1, 32)
+	splited := strings.Split(strValue, ".")
+	if len(splited) > 1 {
+		chars := []rune(splited[1])
+		for i := 0; i < len(chars); i++ {
+			count++
+		}
+	}
+
+	return count
 }

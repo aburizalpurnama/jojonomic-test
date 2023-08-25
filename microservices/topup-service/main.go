@@ -9,7 +9,6 @@ import (
 	"price-check-service/repository"
 	"price-input-service/broker"
 	"strconv"
-	"strings"
 	"time"
 	"topup-service/usecases"
 	"topup-service/usecases/request"
@@ -68,7 +67,7 @@ func topup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	count := countDecimalPlaces(float32(gram))
+	count := usecases.CountDecimalPlaces(float32(gram))
 	if count > 3 {
 		logrus.Info("invalid gram, max 3 decimal places")
 		responsePayload.Error = true
@@ -137,24 +136,10 @@ func topup(w http.ResponseWriter, r *http.Request) {
 	payload, _ := json.Marshal(responsePayload)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(payload)
 	if responsePayload.Error {
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
-}
-
-func countDecimalPlaces(value float32) int {
-	var count int
-	strValue := strconv.FormatFloat(float64(value), 'f', -1, 32)
-	splited := strings.Split(strValue, ".")
-	if len(splited) > 1 {
-		chars := []rune(splited[1])
-		for i := 0; i < len(chars); i++ {
-			count++
-		}
-	}
-
-	return count
+	w.Write(payload)
 }
