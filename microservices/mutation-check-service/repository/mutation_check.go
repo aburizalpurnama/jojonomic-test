@@ -22,7 +22,7 @@ func NewMutationCheckRepo(db *sqlx.DB) MutationCheckRepo {
 }
 
 const (
-	selectTransactionsByNorekQuery = `SELECT id , "date" , "type" , rekening_id , norek , gram , harga_topup , harga_buyback , saldo FROM tbl_transaksi WHERE norek = $1 AND "date" BETWEEN $2 AND $3;`
+	selectTransactionsByNorekQuery = `SELECT id , "date" , "type" , rekening_id , norek , gram , harga_topup , harga_buyback , saldo FROM tbl_transaksi WHERE norek = $1 AND "date" BETWEEN $2 AND $3 ORDER BY "date" DESC;`
 )
 
 func (r *MutationCheckRepoImpl) SelectTransactionsByNorek(norek string, start int64, end int64) ([]model.Transaction, error) {
